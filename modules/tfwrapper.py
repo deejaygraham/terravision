@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import subprocess
 import click
-import modules.gitlibs as gitlibs
+#import modules.gitlibs as gitlibs
 import modules.helpers as helpers
 import tempfile
 import shutil
@@ -31,22 +31,22 @@ def tf_initplan(source: tuple, varfile: list, workspace: str):
         if os.path.isdir(sourceloc):
             os.chdir(sourceloc)
             codepath = sourceloc
-        else:
-            githubURL, subfolder, git_tag = gitlibs.get_clone_url(sourceloc)
-            codepath = gitlibs.clone_files(sourceloc, temp_dir.name)
-            ovpath = os.path.join(basedir, "override.tf")
-            shutil.copy(ovpath, codepath)
-            os.chdir(codepath)
-            codepath = [codepath]
-            if len(os.listdir()) == 0:
-                click.echo(
-                    click.style(
-                        f"\n  ERROR: No files found to process.",
-                        fg="red",
-                        bold=True,
-                    )
-                )
-                exit()
+        #else:
+        #    githubURL, subfolder, git_tag = gitlibs.get_clone_url(sourceloc)
+        #    codepath = gitlibs.clone_files(sourceloc, temp_dir.name)
+        #    ovpath = os.path.join(basedir, "override.tf")
+        #    shutil.copy(ovpath, codepath)
+        #    os.chdir(codepath)
+        #    codepath = [codepath]
+        #    if len(os.listdir()) == 0:
+        #        click.echo(
+        #            click.style(
+        #                f"\n  ERROR: No files found to process.",
+        #                fg="red",
+        #                bold=True,
+        #            )
+        #        )
+        #        exit()
         returncode = os.system(f"terraform init --upgrade")
         if returncode > 0:
             click.echo(
