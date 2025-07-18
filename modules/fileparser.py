@@ -5,11 +5,11 @@ import tempfile
 from pathlib import Path
 from sys import exit
 
-from numpy import source
+#from numpy import source
 import click
 import yaml
 import hcl2
-import modules.gitlibs as gitlibs
+# import modules.gitlibs as gitlibs
 
 
 # Create Tempdir and Module Cache Directories
@@ -45,11 +45,11 @@ def find_tf_files(source: str, paths=list(), mod="main", recursive=False) -> lis
     global annotations
     yaml_detected = False
     # If source is a Git address, clone to temp dir
-    if not os.path.isdir(source):
-        source_location = gitlibs.clone_files(source, temp_dir.name, mod)
-    else:
-        # Source is a local folder
-        source_location = source.strip()
+    #if not os.path.isdir(source):
+    #    source_location = gitlibs.clone_files(source, temp_dir.name, mod)
+    #else:
+    # Source is a local folder
+    source_location = source.strip()
     files = [f for f in os.listdir(source_location)]
     click.echo(f"  Added Source Location: {source}")
     for file in files:
