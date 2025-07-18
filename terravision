@@ -89,7 +89,7 @@ def compile_tfdata(
 
 def preflight_check():
     click.echo(click.style("\nPreflight check..", fg="white", bold=True))
-    dependencies = ["dot", "gvpr", "git", "terraform"]
+    dependencies = ["dot", "gvpr", "terraform"]
     bundle_dir = Path(__file__).parent
     sys.path.append(bundle_dir)
     for exe in dependencies:
